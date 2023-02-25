@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        This is Laboratory 06 of Web Apps
+    </title>
+</head>
+<body>
+    <h1>Painter Entry Sahithi Kasarapu</h1>
+    <h2>Getting input</h2>
+    <form>
+        <div class="form-check">
+            <label for="form1_painter">The hidden painter name</label>
+            <input type="password" id="form1_painter" value="Monet" name="form1_painter"> <br>
+        </div>
+        <div class="form-check">
+            <label for="form1_guess">Guess the painter</label>
+            <input type="text" id="form1_guess" name="form1_guess" autofocus>
+        </div>
+        <div class="form-check">
+            <input type="button" onclick="checkPainter()" value="Check the guess">
+        </div>
+    </form>
+    <p id="result">This text will be replaced </p>
+    <script>
+        function checkPainter() {
+            var oops = 0
+            var good = 0
+            painter = document.getElementById("form1_painter").value
+            guess = document.getElementById("form1_guess").value
+            out = document.getElementById("result")
+            if (painter == guess) {
+                confirm("You got it right")
+                good++
+            } else {
+                confirm("Sorry")
+                oops++
+            }
+            out.innerHTML = " good count: " + good + " Oops count : " + oops
+        }
+    </script>
+</body>
+</html>
+
+
