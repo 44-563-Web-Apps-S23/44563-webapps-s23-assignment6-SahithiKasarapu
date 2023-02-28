@@ -22,7 +22,25 @@
         </div>
     </form>
     <p id="result">This text will be replaced </p>
+    <div class="container"> 
+        <img src="AloeveraPlant.jpg" id="image" onclick="selectImage()" alt="AloeveraPlant" style="width: 100px;height: 100px;">
+    </div>
     <script>
+        var useImage  = 1
+        function selectImage(){
+            switch (useImage) {
+                case 1: useImage = useImage + 1
+                    image.src = "KiwiPlant.jpg";
+                    break;
+                case 2: useImage = useImage + 1
+                    image.src = "ApplePlant.jpeg";
+                    break;
+                case 3: useImage = useImage + 1
+                    image.src = "AloeveraPlant.jpg";
+                    break;
+            }
+        }
+        
         function checkPainter() {
             var oops = 0
             var good = 0
