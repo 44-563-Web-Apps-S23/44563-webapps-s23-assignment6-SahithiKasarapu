@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>
         This is Laboratory 06 of Web Apps
     </title>
 </head>
+
 <body>
     <h1>Painter Entry Sahithi Kasarapu</h1>
     <h2>Getting input</h2>
@@ -18,17 +20,21 @@
             <input type="text" id="form1_guess" name="form1_guess" autofocus>
         </div>
         <div class="form-check">
-            <input type="button" onclick="checkPainter()" value="Check the guess">
+            <input type="button" id="submit" onclick="checkPainter()" value="Check the guess">
         </div>
     </form>
     <p id="result">This text will be replaced </p>
-    <div class="container"> 
-        <img src="AloeveraPlant.jpg"  onclick="selectImage()" alt="AloeveraPlant" 
-        style="width: 100px;height: 100px;">
+    <div class="container">
+        <img src="AloeveraPlant.jpg" onclick="selectImage()" alt="AloeveraPlant" style="width: 100px;height: 100px;">
     </div>
     <script>
-        var useImage  = 1
-        function selectImage(){
+        var useImage = 1
+        var oops = 0
+        var good = 0
+        function throwAlert() {
+            alert("Sorry, ran out of guesses");
+        }
+        function selectImage() {
             switch (useImage) {
                 case 1: useImage = useImage + 1
                     image.src = "KiwiPlant.jpg";
@@ -41,17 +47,21 @@
                     break;
             }
         }
-        
+
+
         function checkPainter() {
-            var oops = 0
-            var good = 0
+
             painter = document.getElementById("form1_painter").value
             guess = document.getElementById("form1_guess").value
             out = document.getElementById("result")
             if (painter == guess) {
                 confirm("You got it right")
                 good++
-            } else {
+            } else if (oops >= 10) {
+                document.getElementById("submit").onclick = throwAlert();
+                out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
+            }
+            else {
                 confirm("Sorry")
                 oops++
             }
@@ -59,6 +69,5 @@
         }
     </script>
 </body>
+
 </html>
-
-
